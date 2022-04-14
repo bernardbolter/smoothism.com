@@ -1,3 +1,5 @@
+@import './vars.scss';
+
 .intro-container {
     width: 100%;
     height: 80vh;
@@ -7,25 +9,41 @@
 
 .logo {
     position: absolute;
-    top: 30px;
-    left: 30px;
-    width: 100px;
-    height: 100px;
+    top: 15px;
+    left: 15px;
+    width: 75px;
+    height: 75px;
+
+    @media screen and (min-width: $mobile) {
+        top: 30px;
+        left: 30px;
+        width: 100px;
+        height: 100px; 
+    }
+
+    @media screen and (min-width: $tablet) {
+        
+    }
 }
 
 .bernard {
     position: absolute;
-    top: 30px;
-    right: 30px;
+    top: 15px;
+    right: 15px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
 
+    @media screen and (min-width: $mobile) {
+        top: 30px;
+        right: 30px;
+    }
+
     h1 {
         font-size: 20px;
         font-weight: 400;
-        margin: 0 0 10 0;
+        margin: 0 0 10px 0;
         padding: 0;
     }
 
@@ -56,10 +74,15 @@
 
 .into-links {
     position: absolute;
-    right: 50px;
-    top: 40vh;
+    right: 15px;
+    top: 120px;
     display: flex;
     flex-direction: column;
+
+    @media screen and (min-width: $mobile) {
+        right: 30px;
+        top: 150px;
+    }
 
     a {
         text-decoration: none;
@@ -91,31 +114,55 @@
 
 .lead {
     position: absolute;
-    top: 20vh;
-    right: 30%;
+    top: 220px;
+    width: 90%;
+    margin: 0 5%;
+
+    @media screen and (min-width: $mobile) {
+        top: 35vh;
+        right: 5%;
+        margin: 0;
+    }
 
     h1 {
-        font-size: 28px;
+        font-size: 20px;
+        line-height: 30px;
         font-weight: 700;
         margin: 0;
         padding: 0;
-        line-height: 34px;
-        text-align: right;
+        text-align: left;
+
+        @media screen and (min-width: $mobile) {
+            font-size: 28px;
+            line-height: 34px;
+            text-align: right;
+        }
     }
 }
 
 .pitch {
     position: absolute;
-    top: 35vh;
-    right: 30%;
+    top: 350px;
+    right: 10px;
+
+    @media screen and (min-width: $mobile) {
+        top: 60vh;
+        right: 5%;
+    }
 
     h2 {
         font-size: 18px;
+        line-height: 28px;
+        text-align: right;
         font-weight: 400;
         margin: 0;
         padding: 0;
-        line-height: 28px;
-        text-align: right;
+
+        @media screen and (min-width: $mobile) {
+            font-size: 16px;
+            line-height: 28px;
+            text-align: right;
+        }
     }
 
     .pitch-padding {
@@ -123,11 +170,17 @@
     }
 
     h3 {
-        font-size: 15px;
+        font-size: 12px;
+        line-height: 23px;
+        text-align: left;
         font-weight: 300;
         margin: 0;
         padding: 0;
-        line-height: 23px;
-        text-align: right;
+
+        @media screen and (min-width: $mobile) {
+            font-size: 15px;
+            line-height: 23px;
+            text-align: right;
+        }
     }
 }

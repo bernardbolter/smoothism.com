@@ -10,6 +10,8 @@ const SmoothProvider = ({ children }) => {
         primaryLight: '',
         secondaryLight: '',
         changeColor: false,
+        introHeight: 0,
+        projectBorder: 0,
     })
 
     useEffect(() => {

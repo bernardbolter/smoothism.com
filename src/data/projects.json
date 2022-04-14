@@ -2,6 +2,29 @@
     {
         "website" : "herbstsalon.berlin",
         "link" : "https://herbstsalon.berlin",
-        "tagline" : "A funded art event located in the Schöneberg neighborhood in Berlin"
+        "tagline" : "A funded art event located in the Schöneberg neighborhood in Berlin",
+        "made-with" : "React with Gatsby, Contentful backend, Mapbox, VScode, Figma",
+        "github" : "https://github.com/bernardbolter/herbstsalon"
+    },
+    {
+        "website" : "manmademastering.com",
+        "link" : "https://manmademastering.com",
+        "tagline" : "A vinyl mastering company based in Berlin",
+        "made-with" : "JQuery, Gulp, Sass, Sendgrid, Sketch, Sublime Text, Photoshop, and a little bit of PHP",
+        "github" : "https://github.com/bernardbolter/manmade-skeleton"
+    },
+    {
+        "website" : "megacities.world",
+        "link" : "https://megacites.world",
+        "tagline" : "Composite Country Portraits",
+        "made-with" : "react with Gatsby, D3, Sass, Figma, Photoshop",
+        "github" : "https://github.com/bernardbolter/megacities.world"
+    },
+    {
+        "website" : "countdowngrabowsee.de",
+        "link" : "https://countdowngrabowsee.de",
+        "tageline" : "Yearly Artist residency located just outside of Berlin",
+        "made-with" : "Vue, Google Forms as backend, Sass, Figma",
+        "github" : "https://github.com/bernardbolter/grabowsee"
     }
 ]

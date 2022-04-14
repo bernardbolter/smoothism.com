@@ -9,35 +9,48 @@
     justify-content: center;
     align-items: center;
     position: relative;
+}
 
-    iframe {
-        overflow-y: hidden;
+.project-mask {
+    position: absolute;
+    z-index: 10;
+    overflow: hidden;
+
+    .project-square {
+        position: absolute;
+        overflow: hidden;
+        z-index: 11;
     }
 }
 
-.project-svg {
+.web-link {
+    opacity: 0;
     position: absolute;
     z-index: 10;
-}
-
-.white-layer {
     width: 100%;
     height: 100vh;
-    z-index: 10;
-    position: absolute;
-    background: rgba(255,255,255,1);
-    clip-path: polygon(5% 5%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
-}
+    background: rgba(0,0,0,.4);
+    transition: opacity .5s ease;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-.black-layer {
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    z-index: 9;
-    background: rgba(0,0,0,1);
+    p {
+        background: rgba(255,255,255,.8);
+        padding: 10px 15px;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 16px;
+    }
+
+    &:hover {
+        opacity: 1;
+        transition: opacity .5s ease;
+    }
 }
 
 .project-iframe {
     position: absolute;
     z-index: 9;
+    overflow: hidden;
 }

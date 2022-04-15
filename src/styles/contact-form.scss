@@ -1,0 +1,35 @@
+@import './vars.scss';
+
+.contact-form-container {
+    width: 90%;
+    margin: 5%;
+
+    @media screen and (min-width: $tablet) {
+        width: 85%;
+        margin: 7.5%;
+    }
+
+    @media screen and (min-width: $desktop) {
+        width: 80%;
+        margin: 10%;
+    }
+}
+
+.form-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    label {
+        font-family: "IBM Plexo Mono", monospace;
+        font-size: 11px;
+        margin: 0;
+        padding: 0;
+    }
+
+    input {
+        -webkit-appearance: none;
+        appearance: none;
+    }
+}

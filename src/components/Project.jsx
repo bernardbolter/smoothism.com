@@ -4,18 +4,22 @@ import { motion, useViewportScroll, useTransform } from 'framer-motion'
 import { useWindowSize } from '../helpers/useWindowSize'
 import * as Scroll from 'react-scroll'
 
+import { ReactComponent as Github } from '../svg/github.svg'
+
 import '../styles/project.scss'
 
 const Project = ({ project, index }) => {
     const [smooth] = useContext(SmoothContext)
     const [viewWebsite, setViewWebsite] = useState(false)
-    const [even] = useState(index % 2 == 0 ? true : false)
+    const [even] = useState(index % 2 === 0 ? true : false)
     const size = useWindowSize()
     const { scrollY } = useViewportScroll()
     var scroll = Scroll.animateScroll;
     const movingWidth = useTransform(scrollY, [index * size.height, smooth.introHeight + (size.height * index)], [size.width - 44 - smooth.projectBorder - smooth.projectBorder, smooth.projectBorder])
     const bottomHeight = useTransform(scrollY, [index * size.height, smooth.introHeight + (size.height * index)], [size.height - 44 - smooth.projectBorder - smooth.projectBorder, smooth.projectBorder])
-
+    const projectLinkVisible = useTransform(scrollY, [(index * size.height) + (smooth.introHeight * .1), (index * size.height) + (smooth.introHeight * .5)], [1, 0])
+    const headerVisible = useTransform(scrollY, [(index * size.height) + (smooth.introHeight * .5), (index * size.height) + (smooth.introHeight * .9)], [0, 1])
+    // const footerVisible = useTransform(scrollY, [], [])
 
     return (
         <section className="project-container">
@@ -24,7 +28,8 @@ const Project = ({ project, index }) => {
                 style={{
                     left: even ? smooth.projectBorder : "auto",
                     right: even ? "auto" : smooth.projectBorder,
-                    top: index === 0 ? 0 : -40
+                    top: index === 0 ? 0 : -40,
+                    opacity: projectLinkVisible
                 }}
                 onClick={() => {
                     scroll.scrollTo(size.height * .8 + (size.height * index))
@@ -40,6 +45,22 @@ const Project = ({ project, index }) => {
                     height: size.height
                 }}    
             >
+                <motion.p
+                    className="project-website"
+                    style={{ 
+                        left: smooth.projectBorder,
+                        top: smooth.projectBorder - 20,
+                        opacity: headerVisible
+                    }}
+                >{project.website}</motion.p>
+                <motion.p
+                    className="project-tagline"
+                    style={{ 
+                        right: smooth.projectBorder,
+                        top: smooth.projectBorder - 20,
+                        opacity: headerVisible
+                    }}
+                >{project.tagline}</motion.p>
                 <motion.div 
                     className="project-square left"
                     style={{
@@ -91,6 +112,21 @@ const Project = ({ project, index }) => {
                         transform: 'rotate(-10deg)'
                     }}
                 />
+                <motion.p
+                    className={even ? "made-with made-right" : "made-with -made-left"}
+                >
+                    <span>made with: </span>
+                    {project.madeWith}
+                </motion.p>
+                <motion.a
+                    className={even ? "project-github github-right" : "project-github github-left"}
+                    href={project.github}
+                >
+                    <Github 
+                        style={{ fill: smooth.primaryDark}}
+                    />
+                    <p>github link</p>
+                </motion.a>
                 <div 
                     className="web-link"
                     onClick={() => setViewWebsite(true)}

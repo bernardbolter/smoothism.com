@@ -32,26 +32,57 @@ const Intro = () => {
                 height: smooth.introHeight
             }}    
         >
-            <motion.div className="logo">
+            <motion.div 
+                className="logo"
+                initial={{ translateX: -200 }}
+                animate={{ translateX: 0 }}
+                transition={{ duration: 1, ease: "easeIn"}}
+            >
                 <Logo style={{ fill: smooth.primaryDark }}/>
             </motion.div>
             <motion.div className="bernard">
-                <h1>Creative Solutions</h1>
-                <h2><span>from</span> Bernard Bolter</h2>
-                <h3>b. 1974 <span>(San Francisco)</span></h3>
-                <h3>lives and codes in Berlin</h3>
+                <motion.h1
+                    initial={{ translateX: 200 }}
+                    animate={{ translateX: 0 }}
+                    transition={{ duration: 0.5, ease: 'easeIn' }}
+                >Creative Solutions</motion.h1>
+                <motion.h2
+                    initial={{ translateX: 200 }}
+                    animate={{ translateX: 0 }}
+                    transition={{ duration: 0.5, ease: 'easeIn', delay: 0.2 }}
+                ><span>from</span> Bernard Bolter</motion.h2>
+                <motion.h3
+                    initial={{ translateX: 200 }}
+                    animate={{ translateX: 0 }}
+                    transition={{ duration: 0.5, ease: 'easeIn', delay: 0.4 }}
+                >b. 1974 <span>(San Francisco)</span></motion.h3>
+                <motion.h3
+                    initial={{ translateX: 200 }}
+                    animate={{ translateX: 0 }}
+                    transition={{ duration: 0.5, ease: 'easeIn', delay: 0.6 }}
+                >lives and codes in Berlin</motion.h3>
             </motion.div>
             <motion.div className="into-links">
-                <a href="https://www.instagram.com/bernardbolter/">
+                <motion.a 
+                    href="https://www.instagram.com/bernardbolter/"
+                    initial={{ translateX: 200 }}
+                    animate={{ translateX: 0 }}
+                    transition={{ duration: 0.5, ease: 'easeIn', delay: 0.8 }}    
+                >
                     <Insta />
                     <h4 style={{ color: smooth.primaryDark }}>@bernardbolter</h4>
-                </a>
-                <a href="https://github.com/bernardbolter"  >
+                </motion.a>
+                <motion.a 
+                    href="https://github.com/bernardbolter"
+                    initial={{ translateX: 200 }}
+                    animate={{ translateX: 0 }}
+                    transition={{ duration: 0.5, ease: 'easeIn', delay: 1 }}
+                >
                     <Github 
                         style={{ fill: smooth.primaryDark}}
                     />
                     <h4 style={{ color: smooth.primaryDark }}>@bernardbolter</h4>
-                </a>
+                </motion.a>
             </motion.div>
             <motion.div className="lead">
                 <h1>Out here, helping</h1>

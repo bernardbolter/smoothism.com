@@ -105,6 +105,11 @@
         top: 150px;
     }
 
+    @media screen and (min-width: $tablet) {
+        right: 30px;
+        top: 36vh;
+    }
+
     a {
         text-decoration: none;
         display: flex;

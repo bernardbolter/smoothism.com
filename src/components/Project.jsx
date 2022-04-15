@@ -15,8 +15,7 @@ const Project = ({ project, index }) => {
     var scroll = Scroll.animateScroll;
     const movingWidth = useTransform(scrollY, [index * size.height, smooth.introHeight + (size.height * index)], [size.width - 44 - smooth.projectBorder - smooth.projectBorder, smooth.projectBorder])
     const bottomHeight = useTransform(scrollY, [index * size.height, smooth.introHeight + (size.height * index)], [size.height - 44 - smooth.projectBorder - smooth.projectBorder, smooth.projectBorder])
-    
-    console.log(even)
+
 
     return (
         <section className="project-container">

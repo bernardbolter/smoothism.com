@@ -1,10 +1,10 @@
-import React, { useEffect, useContext  } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { SmoothContext } from '../providers/SmoothProvider'
 import { useWindowSize } from '../helpers/useWindowSize'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import Intro  from './Intro'
 import Projects from './Projects'
-// import Project from './Project'
 
 import '../styles/app.scss'
 
@@ -23,15 +23,20 @@ const App = () => {
     }, [size])
 
     return (
-        <main 
-            className="app-container"
-            style={{
-                background: `linear-gradient(to top, ${smooth.primaryLight},${smooth.secondaryLight})`
-            }}
-        >
-            <Intro />
-            <Projects />
-        </main>
+        <AnimatePresence>
+            <motion.main 
+                className="app-container"
+                style={{
+                    background: `linear-gradient(to top, ${smooth.primaryLight},${smooth.secondaryLight})`
+                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+            >
+                <Intro />
+                <Projects />
+            </motion.main>
+        </AnimatePresence>
     )
 }
 

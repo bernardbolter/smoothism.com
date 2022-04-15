@@ -2,18 +2,38 @@ import React, { useState, useEffect, useContext } from 'react'
 import { SmoothContext } from '../providers/SmoothProvider'
 import { motion, useViewportScroll, useTransform } from 'framer-motion'
 import { useWindowSize } from '../helpers/useWindowSize'
+import * as Scroll from 'react-scroll'
 
 import '../styles/project.scss'
 
-const Project = () => {
+const Project = ({ project, index }) => {
     const [smooth] = useContext(SmoothContext)
+    const [viewWebsite, setViewWebsite] = useState(false)
+    const [even] = useState(index % 2 == 0 ? true : false)
     const size = useWindowSize()
     const { scrollY } = useViewportScroll()
-    const rightWidth = useTransform(scrollY, [0, smooth.introHeight], [size.width - 44 - smooth.projectBorder - smooth.projectBorder, smooth.projectBorder])
-    const bottomHeight = useTransform(scrollY, [0, smooth.introHeight], [size.height - 44 - smooth.projectBorder - smooth.projectBorder, smooth.projectBorder])
+    var scroll = Scroll.animateScroll;
+    const movingWidth = useTransform(scrollY, [index * size.height, smooth.introHeight + (size.height * index)], [size.width - 44 - smooth.projectBorder - smooth.projectBorder, smooth.projectBorder])
+    const bottomHeight = useTransform(scrollY, [index * size.height, smooth.introHeight + (size.height * index)], [size.height - 44 - smooth.projectBorder - smooth.projectBorder, smooth.projectBorder])
+    
+    console.log(even)
 
     return (
         <section className="project-container">
+            <motion.div 
+                className="view-projects"
+                style={{
+                    left: even ? smooth.projectBorder : "auto",
+                    right: even ? "auto" : smooth.projectBorder,
+                    top: index === 0 ? 0 : -40
+                }}
+                onClick={() => {
+                    scroll.scrollTo(size.height * .8 + (size.height * index))
+                }} 
+            >
+                <p>{index === 0 ? "View" : "Next"}</p>
+                <p>Project{index === 0 ? "s" : ""}</p>
+            </motion.div>
             <div 
                 className="project-mask"
                 style={{
@@ -26,8 +46,9 @@ const Project = () => {
                     style={{
                         background: smooth.primaryLight,
                         left: 0,
+                        top: 0,
                         height: "100%",
-                        width: smooth.projectBorder
+                        width: even ? smooth.projectBorder : movingWidth
                     }}
                 />
                 <motion.div
@@ -46,7 +67,7 @@ const Project = () => {
                         background: smooth.primaryLight,
                         right: 0,
                         top: 0,
-                        width: rightWidth,
+                        width: even ? movingWidth : smooth.projectBorder,
                         height: "100vh"
                     }}
                 />
@@ -88,12 +109,12 @@ const Project = () => {
                 }}    
             >
                 <iframe
-                    title="megacities.world"
+                    title={project.website}
                     width={size.width}
                     height={size.height}
                     scrolling="no"
                     frameBorder="0"
-                    src="https://manmademastering.de" 
+                    src={project.link}
                 />
             </div>
         </section>

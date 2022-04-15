@@ -17,7 +17,7 @@ const Intro = () => {
     useEffect(() => {
         var introHeight
         if (size.width < 500) {
-            introHeight = 500
+            introHeight = 550
         } else {
             introHeight = size.height * .8
         }

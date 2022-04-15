@@ -1,5 +1,6 @@
 import React, { useEffect, useContext  } from 'react'
 import { SmoothContext } from '../providers/SmoothProvider'
+import { useWindowSize } from '../helpers/useWindowSize'
 
 import Intro  from './Intro'
 import Projects from './Projects'
@@ -8,7 +9,8 @@ import Projects from './Projects'
 import '../styles/app.scss'
 
 const App = () => {
-    const [smooth] = useContext(SmoothContext)
+    const [smooth, setSmooth] = useContext(SmoothContext)
+    const size = useWindowSize()
 
     useEffect(() => {
         var borderSize

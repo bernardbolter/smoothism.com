@@ -1,38 +1,24 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { SmoothContext } from '../providers/SmoothProvider'
-import { useWindowSize } from '../helpers/useWindowSize'
-import { motion, scrollBy } from 'framer-motion'
-import * as Scroll from 'react-scroll';
 import Project from './Project'
+
+import projects from '../data/projects.json'
+import { shuffle } from '../helpers'
 
 import '../styles/projects.scss'
 
 const Projects = () => {
-    const [smooth, setSmooth] = useContext(SmoothContext)
-    const size = useWindowSize()
-    var scroll = Scroll.animateScroll;
-
-    
+    const [smooth] = useContext(SmoothContext)
+    // const [projects] = useState(shuffle(shuffle(projectsJSON)))
 
     return (
         <section 
             className="projects-container"
             style={{ color: smooth.primaryColor }}
-        >
-            <motion.div 
-                className="view-projects"
-                style={{
-                    left: smooth.projectBorder,
-                    top: smooth.introHeight
-                }}
-                onClick={() => {
-                    scroll.scrollTo(size.height * .8)
-                }} 
-            >
-                <p>View</p>
-                <p>projects</p>
-            </motion.div>
-            <Project />
+        >   
+            {shuffle(projects).map((project,i ) => (
+                <Project project={project} key={i} index={i} />
+            ))}
         </section>
     )
 }

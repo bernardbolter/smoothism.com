@@ -1,7 +1,7 @@
 [
     {
         "website" : "herbstsalon.berlin",
-        "link" : "https://herbstsalon.berlin",
+        "link" : "http://herbstsalon.berlin",
         "tagline" : "A funded art event located in the Schöneberg neighborhood in Berlin",
         "made-with" : "React with Gatsby, Contentful backend, Mapbox, VScode, Figma",
         "github" : "https://github.com/bernardbolter/herbstsalon"
@@ -15,7 +15,7 @@
     },
     {
         "website" : "megacities.world",
-        "link" : "https://megacites.world",
+        "link" : "https://megacities.world/",
         "tagline" : "Composite Country Portraits",
         "made-with" : "react with Gatsby, D3, Sass, Figma, Photoshop",
         "github" : "https://github.com/bernardbolter/megacities.world"

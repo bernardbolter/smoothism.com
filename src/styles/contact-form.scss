@@ -4,6 +4,12 @@
     width: 90%;
     margin: 5%;
 
+    form {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
     @media screen and (min-width: $tablet) {
         width: 85%;
         margin: 7.5%;
@@ -20,6 +26,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    flex-wrap: wrap;
 
     label {
         font-family: "IBM Plexo Mono", monospace;
@@ -31,5 +38,35 @@
     input {
         -webkit-appearance: none;
         appearance: none;
+        width: 100%;
     }
+
+    textarea {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+    }
+}
+
+.form-name {
+    width: 100%;
+
+    @media screen and (min-width: 600px) {
+        width: 47.5%;
+        margin: 0 2.5% 0 0;
+    }
+}
+
+.form-email {
+    width: 100%;
+    margin: 0;
+
+    @media screen and (min-width: 600px) {
+        width: 47.5%;
+        margin: 0 0 0 2.5%;
+    }
+}
+
+.form-message {
+    width: 100%;
 }

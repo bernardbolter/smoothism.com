@@ -19,7 +19,11 @@ const Project = ({ project, index }) => {
     const bottomHeight = useTransform(scrollY, [index * size.height, smooth.introHeight + (size.height * index)], [size.height - 44 - smooth.projectBorder - smooth.projectBorder, smooth.projectBorder])
     const projectLinkVisible = useTransform(scrollY, [(index * size.height) + (smooth.introHeight * .1), (index * size.height) + (smooth.introHeight * .5)], [1, 0])
     const headerVisible = useTransform(scrollY, [(index * size.height) + (smooth.introHeight * .5), (index * size.height) + (smooth.introHeight * .9)], [0, 1])
-    // const footerVisible = useTransform(scrollY, [], [])
+    const madeWithBottom = useState(0)
+
+    useEffect(() => {
+
+    }, [size.width])
 
     return (
         <section className="project-container">
@@ -52,15 +56,20 @@ const Project = ({ project, index }) => {
                         top: smooth.projectBorder - 20,
                         opacity: headerVisible
                     }}
-                >{project.website}</motion.p>
+                >
+                    {project.website}
+                </motion.p>
                 <motion.p
                     className="project-tagline"
                     style={{ 
-                        right: smooth.projectBorder,
-                        top: smooth.projectBorder - 20,
+                        right: size.width < 550 ? 'auto' : smooth.projectBorder,
+                        top: size.width < 550 ? smooth.projectBorder : smooth.projectBorder - 20,
+                        left: size.width < 550 ? smooth.projectBorder : 'auto',
                         opacity: headerVisible
                     }}
-                >{project.tagline}</motion.p>
+                >
+                    {project.tagline}
+                </motion.p>
                 <motion.div 
                     className="project-square left"
                     style={{
@@ -78,7 +87,7 @@ const Project = ({ project, index }) => {
                         left: 0,
                         top: 0,
                         width: "100%",
-                        height: smooth.projectBorder
+                        height: size.width < 550 ? 50 : smooth.projectBorder
                     }}
                 />
                 <motion.div
@@ -105,28 +114,69 @@ const Project = ({ project, index }) => {
                     className="project-square angle"
                     style={{
                         background: smooth.primaryLight,
-                        right: -20,
-                        bottom: -100,
-                        width: "100%",
-                        height: size.height * .2,
-                        transform: 'rotate(-10deg)'
+                        right: even ? 'auto' : smooth.projectBorder / 2,
+                        left: even ? smooth.projectBorder / 2 : 'auto',
+                        bottom: 0,
+                        width: "110%",
+                        height: size.width < 550 ? size.height * .25 : size.height * .3,
+                        transform: even ? 'rotate(-10deg)' : 'rotate(10deg',
+                        transformOrigin: even ? 'right bottom' : 'left bottom' 
                     }}
-                />
-                <motion.p
+                >
+                    <p
+                        className={even ? "made-with made-right" : "made-with -made-left"}
+                        style={{ 
+                            right: even ? '10%' : 'auto',
+                            left: even ? 'auto' : '10%',
+                            textAlign: even ? 'right' : 'left'
+                        }}
+                    >
+                        <span>made with: </span>
+                        {project.madeWith}
+                    </p>
+                    <a
+                        className={even ? "project-github github-right" : "project-github github-left"}
+                        style={{
+                            right: even ? '11%' : 'auto',
+                            left: even ? 'auto' : '11%',
+                            top: 28
+                        }}
+                        href={project.github}
+                    >
+                        <Github 
+                            style={{ fill: smooth.primaryDark}}
+                        />
+                        <p>github link</p>
+                    </a>
+                </motion.div>
+                {/* <motion.p
                     className={even ? "made-with made-right" : "made-with -made-left"}
+                    style={{ 
+                        left: size.width < 550 ? smooth.projectBorder * 1.5 : smooth.projectBorder * 2,
+                        bottom: size.width < 550 ? smooth.projectBorder * 4 : 0,
+                        width: size.width < 550 ? '60%' : '100%',
+                        transform: even ? 'rotate(-10deg)' : 'rotate(10deg)'
+                     }}
                 >
                     <span>made with: </span>
                     {project.madeWith}
-                </motion.p>
-                <motion.a
+                </motion.p> */}
+                {/* <motion.a
                     className={even ? "project-github github-right" : "project-github github-left"}
+                    style={{
+                        right: even ? smooth.projectBorder : 'auto',
+                        left: even ? 'auto' : smooth.projectBorder * 2,
+                        top: size.width < 550 ? size.height * .8 : 'auto',
+                        bottom: size.width < 550 ? 'auto' : 0,
+                        transform: even ? 'rotate(-10deg' : 'rotate(10deg'
+                    }}
                     href={project.github}
                 >
                     <Github 
                         style={{ fill: smooth.primaryDark}}
                     />
                     <p>github link</p>
-                </motion.a>
+                </motion.a> */}
                 <div 
                     className="web-link"
                     onClick={() => setViewWebsite(true)}

@@ -2,7 +2,7 @@
     {
         "website" : "herbstsalon.berlin",
         "link" : "http://herbstsalon.berlin",
-        "tagline" : "Art Event located in the Schöneberg neighborhood of Berlin",
+        "tagline" : "Art Event located in the Schöneberg, Berlin",
         "madeWith" : "React with Gatsby, Contentful backend, Mapbox, VScode, Figma",
         "github" : "https://github.com/bernardbolter/herbstsalon"
     },
@@ -26,5 +26,12 @@
         "tagline" : "Artist Residency located just outside of Berlin",
         "madeWith" : "Vue, Google Forms as backend, Sass, Figma",
         "github" : "https://github.com/bernardbolter/grabowsee"
+    },
+    {
+        "website" : "augustinpalm.se",
+        "link" : "https://www.augustinpalm.se/",
+        "tagline" : "Freelance journaist from Sweden",
+        "madeWith" : "Custom Wordpress Theme, Issuu Api, Grunt, Sass, Sketch",
+        "github" : "https://github.com/bernardbolter/augustinpalm_theme"
     }
 ]

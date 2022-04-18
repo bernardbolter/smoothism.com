@@ -9,15 +9,26 @@ import '../styles/contact-form.scss'
 const ContactForm = () => {
     const [smooth] = useContext (SmoothContext)
     return (
-        <section className="contact-form-container">
+        <section 
+            className="contact-form-container"
+            style={{color: smooth.primaryDark}}
+        >
+            <h1>Send me a message and</h1>
+            <h1>Let's see how we can make</h1>
+            <h1>your thing Smooth.</h1>
+            <p>by email</p>
+            <h2>whatsup@smoothism.com</h2>
+            <p>or</p>
+            <h2>bernardbolter@gmail.com</h2>
+            <p>or use the form</p>
             <Formik
                 initialValues={{name: '', email: '', message: ''}}
                 validate={values => {
                     const errors = {}
                     if (!values.email) {
-                        errors.email = "*required"
+                        errors.email = <p>* required</p>
                     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-                        errors.email = "invalid email"
+                        errors.email = <p>invalid email</p>
                     }
                     return errors
                 }}

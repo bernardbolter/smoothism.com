@@ -1,5 +1,7 @@
 import React, { useState, useEffect, createContext } from 'react'
-import { randomColor } from '../helpers'
+import { randomColor, shuffle } from '../helpers'
+
+import Projects from '../data/projects.json'
 
 export const SmoothContext = createContext()
 
@@ -12,6 +14,7 @@ const SmoothProvider = ({ children }) => {
         changeColor: false,
         introHeight: 0,
         projectBorder: 0,
+        projects: []
     })
 
     useEffect(() => {
@@ -23,6 +26,13 @@ const SmoothProvider = ({ children }) => {
             secondaryLight: randomColor(250,255,1)
         }))
     }, [smooth.changeColor])
+
+    useEffect(() => {
+        setSmooth(state => ({
+            ...state,
+            projects: shuffle(Projects)
+        }))
+    }, [])
     
     return (
         <SmoothContext.Provider

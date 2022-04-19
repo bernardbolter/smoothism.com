@@ -125,6 +125,23 @@
 
 .project-iframe {
     position: absolute;
-    z-index: 9;
     overflow: hidden;
+}
+
+.project-live-nav {
+    position: fixed;
+    z-index: 901;
+    top: -1px;
+    cursor: pointer;
+
+    a {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px 10px;
+        font-size: 15px;
+        font-family: 'IBM Plexo Mono', monospace;
+    }
 }

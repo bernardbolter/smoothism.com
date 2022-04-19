@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react'
 import { motion } from 'framer-motion'
 import { SmoothContext } from '../providers/SmoothProvider'
 import { useWindowSize } from '../helpers/useWindowSize'
+import * as Scroll from 'react-scroll'
 
 import { ReactComponent as Logo } from '../svg/logo.svg'
 import { ReactComponent as Insta } from '../svg/insta.svg'
@@ -11,8 +12,8 @@ import '../styles/intro.scss'
 
 const Intro = () => {
     const [smooth, setSmooth] = useContext(SmoothContext)
-    console.log(smooth)
     const size = useWindowSize()
+    var scroll = Scroll.animateScroll;
 
     useEffect(() => {
         var introHeight
@@ -29,7 +30,8 @@ const Intro = () => {
             className="intro-container"
             style={{ 
                 color: smooth.primaryDark,
-                height: smooth.introHeight
+                height: smooth.introHeight,
+                background: `linear-gradient(to top, ${smooth.primaryLight},${smooth.secondaryLight})`
             }}    
         >
             <motion.div 
@@ -83,6 +85,23 @@ const Intro = () => {
                     />
                     <h4 style={{ color: smooth.primaryDark }}>@bernardbolter</h4>
                 </motion.a>
+                <motion.div
+                    className="intro-contact"
+                    initial={{ translateX: 200 }}
+                    animate={{ translateX: 0 }}
+                    transition={{ duration: 0.5, ease: 'easeIn', delay: 1.2 }}
+                    onClick={() => scroll.scrollTo(size.height * .8 + (size.height * smooth.projects.length))}
+                >
+                    <div 
+                        className="intro-arrow"
+                        style={{ fill: smooth.primaryDark, color: smooth.primaryDark }}    
+                    >
+                        <svg viewBox="0 0 16 22">
+                            <path d="M6.91401 20.6483L0.905182 13.4873C0.496645 13.0002 0.441553 12.3081 0.767887 11.7625C1.29419 10.8826 2.53142 10.7842 3.19062 11.5698L4.66811 13.3308C5.31234 14.099 6.56471 13.6429 6.56471 12.6405V2.48563C6.56471 2.2158 6.63793 1.95126 6.77611 1.71978C7.35522 0.752016 8.75755 0.752016 9.33627 1.71978C9.47462 1.95125 9.54766 2.21581 9.54766 2.48563V12.6405C9.54766 13.6433 10.7999 14.099 11.4443 13.3308L12.9218 11.5699C13.5811 10.7842 14.8182 10.8828 15.3445 11.7627C15.6708 12.3081 15.6161 13.0004 15.2072 13.4875L9.19836 20.6485C8.60234 21.3591 7.50931 21.3591 6.91401 20.6483V20.6483Z" />
+                        </svg>
+                    </div>
+                    <p>contact</p>
+                </motion.div>
             </motion.div>
             <motion.div className="lead">
                 <h1>Out here, helping</h1>

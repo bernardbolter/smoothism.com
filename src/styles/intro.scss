@@ -140,6 +140,37 @@
             margin: 0;
         }
     }
+
+    .intro-contact {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: flex-start;
+        margin-top: 174px;
+        opacity: .8;
+        transition: opacity .5s ease;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 1;
+            transition: opacity .5s ease;
+        }
+
+        .intro-arrow {
+            width: 15px;
+
+            svg {
+                width: 100%;
+            }
+        }
+
+        p {
+            font-family: "IBM Plexo Mono", monospace;
+            font-size: 15px;
+            margin: 0;
+            padding: 0 0 0 5px;
+        }
+    }
 }
 
 .lead {

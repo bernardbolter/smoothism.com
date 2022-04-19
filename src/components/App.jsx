@@ -28,7 +28,7 @@ const App = () => {
             <motion.main 
                 className="app-container"
                 style={{
-                    background: `linear-gradient(to top, ${smooth.primaryLight},${smooth.secondaryLight})`
+                    background: smooth.primaryLight
                 }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

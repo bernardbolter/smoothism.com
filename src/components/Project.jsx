@@ -11,6 +11,7 @@ import '../styles/project.scss'
 const Project = ({ project, index }) => {
     const [smooth] = useContext(SmoothContext)
     const [viewWebsite, setViewWebsite] = useState(false)
+    const [websiteZ, setWebsiteZ] = useState(false)
     const [even] = useState(index % 2 === 0 ? true : false)
     const size = useWindowSize()
     const { scrollY } = useViewportScroll()
@@ -19,14 +20,34 @@ const Project = ({ project, index }) => {
     const bottomHeight = useTransform(scrollY, [index * size.height, smooth.introHeight + (size.height * index)], [size.height - 44 - smooth.projectBorder - smooth.projectBorder, smooth.projectBorder])
     const projectLinkVisible = useTransform(scrollY, [(index * size.height) + (smooth.introHeight * .1), (index * size.height) + (smooth.introHeight * .5)], [1, 0])
     const headerVisible = useTransform(scrollY, [(index * size.height) + (smooth.introHeight * .5), (index * size.height) + (smooth.introHeight * .9)], [0, 1])
-    const madeWithBottom = useState(0)
 
     useEffect(() => {
-
-    }, [size.width])
+        if (viewWebsite) {
+            setTimeout(() => {
+                setWebsiteZ(true)
+                document.body.style.overflow = "hidden"
+            }, 1000)
+        } else {
+            setWebsiteZ(false)
+            document.body.style.overflow = "auto"
+        }
+    }, [viewWebsite])
 
     return (
         <section className="project-container">
+            {viewWebsite && (
+                <motion.div
+                    className="project-live-nav"
+                    style={{
+                        background: smooth.primaryLight,
+                        border: `solid 1px ${smooth.primaryDark}`
+                    }}
+                >
+                    <a
+                        onClick={() => setViewWebsite(false)}
+                    >back to website</a>
+                </motion.div>
+            )}
             <motion.div 
                 className="view-projects"
                 style={{
@@ -42,19 +63,23 @@ const Project = ({ project, index }) => {
                 <p>{index === 0 ? "View" : "Next"}</p>
                 <p>Project{index === 0 ? "s" : ""}</p>
             </motion.div>
-            <div 
+            <motion.div 
                 className="project-mask"
                 style={{
                     width: size.width - 15,
                     height: size.height
-                }}    
+                }}
+                initial={{ opacity: 1 }}
+                animate={{ opacity: viewWebsite ? 0 : 1 }}
+                transition={{ duration: 1, ease: "linear" }}  
             >
                 <motion.p
                     className="project-website"
                     style={{ 
                         left: smooth.projectBorder,
                         top: smooth.projectBorder - 20,
-                        opacity: headerVisible
+                        opacity: headerVisible,
+                        color: smooth.primaryDark
                     }}
                 >
                     {project.website}
@@ -65,7 +90,8 @@ const Project = ({ project, index }) => {
                         right: size.width < 550 ? 'auto' : smooth.projectBorder,
                         top: size.width < 550 ? smooth.projectBorder : smooth.projectBorder - 20,
                         left: size.width < 550 ? smooth.projectBorder : 'auto',
-                        opacity: headerVisible
+                        opacity: headerVisible,
+                        color: smooth.primaryDark
                     }}
                 >
                     {project.tagline}
@@ -149,55 +175,31 @@ const Project = ({ project, index }) => {
                         <p>github link</p>
                     </a>
                 </motion.div>
-                {/* <motion.p
-                    className={even ? "made-with made-right" : "made-with -made-left"}
-                    style={{ 
-                        left: size.width < 550 ? smooth.projectBorder * 1.5 : smooth.projectBorder * 2,
-                        bottom: size.width < 550 ? smooth.projectBorder * 4 : 0,
-                        width: size.width < 550 ? '60%' : '100%',
-                        transform: even ? 'rotate(-10deg)' : 'rotate(10deg)'
-                     }}
-                >
-                    <span>made with: </span>
-                    {project.madeWith}
-                </motion.p> */}
-                {/* <motion.a
-                    className={even ? "project-github github-right" : "project-github github-left"}
-                    style={{
-                        right: even ? smooth.projectBorder : 'auto',
-                        left: even ? 'auto' : smooth.projectBorder * 2,
-                        top: size.width < 550 ? size.height * .8 : 'auto',
-                        bottom: size.width < 550 ? 'auto' : 0,
-                        transform: even ? 'rotate(-10deg' : 'rotate(10deg'
-                    }}
-                    href={project.github}
-                >
-                    <Github 
-                        style={{ fill: smooth.primaryDark}}
-                    />
-                    <p>github link</p>
-                </motion.a> */}
                 <div 
                     className="web-link"
-                    onClick={() => setViewWebsite(true)}
+                    onClick={() => {
+                        scroll.scrollTo(size.height * .8 + (size.height * index))
+                        setViewWebsite(true)
+                    }}
                 >
                     <p
                         style={{ color: smooth.primaryDark }}
-                    >view website</p>
+                    >interacte live</p>
                 </div>
-            </div>
+            </motion.div>
             <div 
                 className="project-iframe"
                 style={{
-                    width: size.width - 15,
-                    height: size.height
+                    width: viewWebsite ? size.width : size.width - 15,
+                    height: size.height,
+                    zIndex: websiteZ ? 900 : 9
                 }}    
             >
                 <iframe
                     title={project.website}
                     width={size.width}
                     height={size.height}
-                    scrolling="no"
+                    scrolling={viewWebsite ? "yes" : "no"}
                     frameBorder="0"
                     src={project.link}
                 />

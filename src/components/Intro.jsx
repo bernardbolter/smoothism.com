@@ -23,7 +23,7 @@ const Intro = () => {
             introHeight = size.height * .8
         }
         setSmooth(state => ({ ...state, introHeight: introHeight }))
-    }, [size])
+    }, [size, setSmooth])
 
     return (
         <section 

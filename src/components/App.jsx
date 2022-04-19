@@ -21,7 +21,7 @@ const App = () => {
             borderSize = 40
         }
         setSmooth(state => ({ ...state, projectBorder: borderSize }))
-    }, [size])
+    }, [size, setSmooth])
 
     return (
         <AnimatePresence>

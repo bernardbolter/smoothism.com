@@ -13,7 +13,6 @@ const Philosophy = () => {
             animate={{ translateY: 0 }}
             exit={{ translateY: '50vh' }}
             transition={{ duration: .5 }}
-            key="impressum"
             className="modal-container"
             key="philosophy"
             style={{ 

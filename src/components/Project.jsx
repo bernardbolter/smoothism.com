@@ -43,9 +43,9 @@ const Project = ({ project, index }) => {
                         border: `solid 1px ${smooth.primaryDark}`
                     }}
                 >
-                    <a
+                    <p
                         onClick={() => setViewWebsite(false)}
-                    >back to website</a>
+                    >back to smoothism.com</p>
                 </motion.div>
             )}
             <motion.div 

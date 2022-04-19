@@ -4,22 +4,20 @@ import { motion } from 'framer-motion'
 
 import '../styles/modal.scss'
 
-const Impressum = () => {
+const Daten = () => {
     const [smooth, setSmooth] = useContext(SmoothContext)
+    
     return (
-        <motion.section 
+        <motion.section
             initial={{ translateY: '50vh'}}
             animate={{ translateY: 0 }}
             exit={{ translateY: '50vh' }}
-            transition={{ duration: .5 }} 
+            transition={{ duration: .5 }}
+            key="daten"
             className="modal-container"
-            style={{ 
-                color: smooth.secondaryDark, 
-                backgroundColor: smooth.secondaryLight,
-                borderTop: `1px solid ${smooth.secondaryDark}`
-            }}    
+            style={{ color: smooth.primaryDark, backgroundColor: smooth.secondaryLight }}    
         >
-            <p>Impressum</p>
+            <p>Daten</p>
             <div
                 className="modal-close"
                 onClick={() => setSmooth(state => ({ ...state, footerModal: 'none' }))}
@@ -35,4 +33,4 @@ const Impressum = () => {
     )
 }
 
-export default Impressum
+export default Daten

@@ -14,7 +14,8 @@ const SmoothProvider = ({ children }) => {
         changeColor: false,
         introHeight: 0,
         projectBorder: 0,
-        projects: []
+        projects: [],
+        footerModal: 'none'
     })
 
     useEffect(() => {

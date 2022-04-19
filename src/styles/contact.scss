@@ -7,6 +7,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: absolute;
 
     @media screen and (min-width: $tablet) {
         flex-direction: row;

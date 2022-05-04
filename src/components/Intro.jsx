@@ -64,6 +64,13 @@ const Intro = () => {
                     transition={{ duration: 0.5, ease: 'easeIn', delay: 0.6 }}
                 >lives and codes in Berlin</motion.h3>
             </motion.div>
+            <motion.div
+                className="box"
+            >
+                <div className="box-left" style={{ backgroundColor: smooth.primaryDark }} />
+                <div className="box-top" style={{ backgroundColor: smooth.primaryDark }}/>
+                <div className="box-bottom" style={{ backgroundColor: smooth.primaryDark }} />
+            </motion.div>
             <motion.div className="into-links">
                 <motion.a 
                     href="https://www.instagram.com/bernardbolter/"

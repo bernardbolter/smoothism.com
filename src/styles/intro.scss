@@ -260,3 +260,38 @@
         }
     }
 }
+
+.box {
+    position: flex;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 40vh;
+    margin: 25% 20vh;
+    padding: 0;
+    top: 0;
+    left: 0;
+    opacity: .05;
+}
+
+.box-left {
+    background-color: inherit;
+    width: 200px;
+    height: 200px;
+}
+
+.box-top {
+    background-color: inherit;
+    width: 200px;
+    height: 200px;
+}
+
+.box-bottom {
+    background-color: inherit;
+    width: 200px;
+    height: 200px;
+}

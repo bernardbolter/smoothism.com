@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Intro  from './Intro'
 import Projects from './Projects'
 import Contact from './Contact'
+import Nav from './Nav'
 
 import '../styles/app.scss'
 
@@ -37,6 +38,7 @@ const App = () => {
                 <Intro />
                 <Projects />
                 <Contact />
+                <Nav />
             </motion.main>
         </AnimatePresence>
     )

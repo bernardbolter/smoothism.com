@@ -146,10 +146,14 @@
         flex-direction: row;
         justify-content: flex-end;
         align-items: flex-start;
-        margin-top: 174px;
+        margin-top: 14px;
         opacity: .5;
         transition: opacity .5s ease;
         cursor: pointer;
+
+        @media screen and (min-width: $mobile) {
+            margin-top: 174px;
+        }
 
         &:hover {
             opacity: .8;
@@ -191,8 +195,8 @@
     }
 
     h1 {
-        font-size: 20px;
-        line-height: 30px;
+        font-size: 17px;
+        line-height: 24px;
         font-weight: 700;
         margin: 0;
         padding: 0;
@@ -227,8 +231,8 @@
     }
 
     h2 {
-        font-size: 18px;
-        line-height: 28px;
+        font-size: 14px;
+        line-height: 24px;
         text-align: right;
         font-weight: 400;
         margin: 0;
@@ -248,7 +252,7 @@
     h3 {
         font-size: 12px;
         line-height: 23px;
-        text-align: left;
+        text-align: right;
         font-weight: 300;
         margin: 0;
         padding: 0;
@@ -262,36 +266,32 @@
 }
 
 .box {
-    position: flex;
+    position: absolute;
     z-index: 1;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 90%;
     height: 40vh;
-    margin: 25% 20vh;
+    margin: 25vh 5% 15vh;
     padding: 0;
     top: 0;
     left: 0;
     opacity: .05;
-}
 
-.box-left {
-    background-color: inherit;
-    width: 200px;
-    height: 200px;
-}
+    @media screen and (min-width: $mobile) {
+        width: 70%;
+        margin: 25vh 15% 15vh;
+    }
 
-.box-top {
-    background-color: inherit;
-    width: 200px;
-    height: 200px;
-}
+    @media screen and (min-width: $tablet) {
+        width: 50%;
+        margin: 25vh 25% 15vh;
+    }
 
-.box-bottom {
-    background-color: inherit;
-    width: 200px;
-    height: 200px;
+    svg {
+        width: 100%;
+        height: auto;
+    }
 }

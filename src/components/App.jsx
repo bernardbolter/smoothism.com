@@ -24,6 +24,10 @@ const App = () => {
         setSmooth(state => ({ ...state, projectBorder: borderSize }))
     }, [size, setSmooth])
 
+    useEffect(() => {
+        setSmooth(state => ({ ...state, introHeight: size.height * .8 }))
+    }, [size, setSmooth])
+
     return (
         <AnimatePresence>
             <motion.main 

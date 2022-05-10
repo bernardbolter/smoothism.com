@@ -1,7 +1,7 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import { motion } from 'framer-motion'
-import { SmoothContext } from '../providers/SmoothProvider'
 import { useWindowSize } from '../helpers/useWindowSize'
+import { SmoothContext } from '../providers/SmoothProvider'
 import * as Scroll from 'react-scroll'
 
 import { ReactComponent as Logo } from '../svg/logo.svg'
@@ -11,19 +11,9 @@ import { ReactComponent as Github } from '../svg/github.svg'
 import '../styles/intro.scss'
 
 const Intro = () => {
-    const [smooth, setSmooth] = useContext(SmoothContext)
+    const [smooth] = useContext(SmoothContext)
     const size = useWindowSize()
     var scroll = Scroll.animateScroll;
-
-    useEffect(() => {
-        var introHeight
-        if (size.width < 500) {
-            introHeight = 550
-        } else {
-            introHeight = size.height * .8
-        }
-        setSmooth(state => ({ ...state, introHeight: introHeight }))
-    }, [size, setSmooth])
 
     return (
         <section 
@@ -67,9 +57,9 @@ const Intro = () => {
             <motion.div
                 className="box"
             >
-                <div className="box-left" style={{ backgroundColor: smooth.primaryDark }} />
-                <div className="box-top" style={{ backgroundColor: smooth.primaryDark }}/>
-                <div className="box-bottom" style={{ backgroundColor: smooth.primaryDark }} />
+                <svg  viewBox="0 0 426 244">
+                    <path d="M0 243.5V0.5H425.5V172.5L313.5 243.5H0Z" fill={smooth.primaryDark} />
+                </svg>
             </motion.div>
             <motion.div className="into-links">
                 <motion.a 

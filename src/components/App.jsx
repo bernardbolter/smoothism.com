@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useMemo } from 'react'
 import { SmoothContext } from '../providers/SmoothProvider'
 import { useWindowSize } from '../helpers/useWindowSize'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -24,9 +24,19 @@ const App = () => {
         setSmooth(state => ({ ...state, projectBorder: borderSize }))
     }, [size, setSmooth])
 
+    const theIntroHeight = useMemo(() => {
+        if (size.width < 400) {
+            return 560
+        } else if (size.width < 500) {
+            return 600
+        } else {
+            return size.height * .8
+        }
+    }, [size])
+
     useEffect(() => {
-        setSmooth(state => ({ ...state, introHeight: size.height * .8 }))
-    }, [size, setSmooth])
+        setSmooth(state => ({ ...state, introHeight: theIntroHeight }))
+    }, [theIntroHeight])
 
     return (
         <AnimatePresence>

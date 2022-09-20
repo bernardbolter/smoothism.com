@@ -151,7 +151,7 @@
         transition: opacity .5s ease;
         cursor: pointer;
 
-        @media screen and (min-width: $mobile) {
+        @media screen and (min-width: $tablet) {
             margin-top: 174px;
         }
 
@@ -185,7 +185,7 @@
 
     @media screen and (min-width: $mobile) {
         top: 35vh;
-        right: 5%;
+        left: 20%;
         margin: 0;
     }
 
@@ -203,12 +203,17 @@
         text-align: left;
 
         @media screen and (min-width: $mobile) {
+            font-size: 20px;
+            line-height: 28px;
+        }
+
+        @media screen and (min-width: $tablet) {
             font-size: 28px;
             line-height: 34px;
             text-align: right;
         }
 
-        @media screen and (min-width: $tablet) {
+        @media screen and (min-width: $desktop) {
             font-size: 32px;
             line-height: 38px;
         }
@@ -218,7 +223,7 @@
 .pitch {
     position: absolute;
     top: 350px;
-    right: 10px;
+    right: 40px;
 
     @media screen and (min-width: $mobile) {
         top: 60vh;

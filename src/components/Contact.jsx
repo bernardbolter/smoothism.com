@@ -18,8 +18,10 @@ const Contact = () => {
                 className="contact-text"
                 style={{ color: smooth.primaryDark }}
             >
-                <h1>Contact</h1>
-                <p>Skate ipsum dolor sit amet, yeah poseur casper nosebone downhill wax coping. Tom Knox salad grind Saran Wrap ollie hole Christ air dude shoveit smith grind. Hang up cess slide air axle set rail slide boardslide manual. 270 Girl stoked 720 boned out berm handplant 180. Full-cab transfer rail slide kidney noseblunt slide bail backside. Coffin 50-50 Johnny Rad smith grind switch mini ramp locals g-turn. Death box bluntslide ho-ho handplant gnar bucket nose-bump Jai Alai Banks nosepicker. Pivot 180 gnar bucket ledge death box Tracker noseblunt slide Steve Olson. Freestyle chicken wing grind helipop flypaper frontside kick-nose.</p>
+                <h1>About</h1>
+                <p>Smoothism is a full service creative operation run by Artist/Designer/Developer Bernard Bolter.</p>
+                <p>From inovative marketing campaigns to cutting edge web apps, Bernard works with the guiding principle that making it smooth, makes its meaningful and memerable.</p>
+                <p>Feel free to contact about any UX/UI design, Wordpress, or React projects you want to develop.</p>
             </motion.div>
             <motion.div className="contact-form">
                 <ContactForm />

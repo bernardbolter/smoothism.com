@@ -55,7 +55,7 @@ const Project = ({ project, index }) => {
                 style={{
                     left: even ? smooth.projectBorder : "auto",
                     right: even ? "auto" : smooth.projectBorder,
-                    top: index === 0 ? 0 : -40,
+                    top: index === 0 ? -20 : -40,
                     opacity: projectLinkVisible
                 }}
                 onClick={() => {
@@ -93,7 +93,8 @@ const Project = ({ project, index }) => {
                         top: size.width < 550 ? smooth.projectBorder : smooth.projectBorder - 20,
                         left: size.width < 550 ? smooth.projectBorder : 'auto',
                         opacity: headerVisible,
-                        color: smooth.primaryDark
+                        color: smooth.primaryDark,
+                        backgroundColor: smooth.primaryLight
                     }}
                 >
                     {project.tagline}
@@ -115,7 +116,7 @@ const Project = ({ project, index }) => {
                         left: 0,
                         top: 0,
                         width: "100%",
-                        height: size.width < 550 ? 50 : smooth.projectBorder
+                        height: size.width < 550 ? 25 : smooth.projectBorder
                     }}
                 />
                 <motion.div

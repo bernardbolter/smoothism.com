@@ -28,12 +28,14 @@ const SmoothProvider = ({ children }) => {
         }))
     }, [smooth.changeColor])
 
+    const shuffledProjects = shuffle(Projects)
+
     useEffect(() => {
         setSmooth(state => ({
             ...state,
-            projects: shuffle(Projects)
+            projects: shuffledProjects
         }))
-    }, [])
+    }, [shuffledProjects])
     
     return (
         <SmoothContext.Provider

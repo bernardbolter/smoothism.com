@@ -9,7 +9,7 @@ import { ReactComponent as Github } from '../svg/github.svg'
 import '../styles/project.scss'
 
 const Project = ({ project, index }) => {
-    const [smooth] = useContext(SmoothContext)
+    const [smooth, setSmooth] = useContext(SmoothContext)
     const [viewWebsite, setViewWebsite] = useState(false)
     const [websiteZ, setWebsiteZ] = useState(false)
     const [even] = useState(index % 2 === 0 ? true : false)
@@ -26,14 +26,16 @@ const Project = ({ project, index }) => {
     useEffect(() => {
         if (viewWebsite) {
             setTimeout(() => {
+                setSmooth(state => ({ ...state, viewNavigation: false }))
                 setWebsiteZ(true)
                 document.body.style.overflow = "hidden"
             }, 1000)
         } else {
+            setSmooth(state => ({ ...state, viewNavigation: true }))
             setWebsiteZ(false)
             document.body.style.overflow = "auto"
         }
-    }, [viewWebsite])
+    }, [viewWebsite, setSmooth])
 
     return (
         <section className="project-container">
@@ -59,7 +61,7 @@ const Project = ({ project, index }) => {
                     opacity: projectLinkVisible
                 }}
                 onClick={() => {
-                    scroll.scrollTo(size.height * .8 + (size.height * index))
+                    scroll.scrollTo(smooth.introHeight + (size.height * index))
                 }} 
             >
                 <p>{index === 0 ? "View" : "Next"}</p>
@@ -181,13 +183,13 @@ const Project = ({ project, index }) => {
                 <div 
                     className="web-link"
                     onClick={() => {
-                        scroll.scrollTo(size.height * .8 + (size.height * index))
+                        scroll.scrollTo(smooth.introHeight + (size.height * index))
                         setViewWebsite(true)
                     }}
                 >
                     <p
                         style={{ color: smooth.primaryDark }}
-                    >interacte live</p>
+                    >view live website</p>
                 </div>
             </motion.div>
             <div 

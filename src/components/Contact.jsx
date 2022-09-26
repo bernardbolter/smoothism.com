@@ -13,7 +13,10 @@ import '../styles/contact.scss'
 const Contact = () => {
     const [smooth] = useContext(SmoothContext)
     return (
-        <section className="contact-container">
+        <section 
+            className="contact-container"
+            style={{ background: smooth.primaryLight }}    
+        >
             <motion.div 
                 className="contact-text"
                 style={{ color: smooth.primaryDark }}

@@ -57,9 +57,19 @@ const Intro = () => {
             <motion.div
                 className="box"
             >
-                <svg  viewBox="0 0 426 244">
-                    <path d="M0 243.5V0.5H425.5V172.5L313.5 243.5H0Z" fill={smooth.primaryDark} />
-                </svg>
+                {
+                    [1,2,3,4].map(i => (
+                        <svg  viewBox="0 0 426 244" key={i}>
+                            <motion.path 
+                                d="M0 243.5V0.5H425.5V172.5L313.5 243.5H0Z" 
+                                initial={{ fill: smooth.primaryDark, opacity: 0 }}
+                                animate={{ scale: `0.${i * 2}`, opacity: `0.0${i * 2}`  }}
+                                transition={{ duration: 2.0, ease: "linear", delay: `${i}` }}
+                                style={{ transform:  "scale(1)" }}
+                            />
+                        </svg>
+                    ))
+                }
             </motion.div>
             <motion.div className="into-links">
                 <motion.a 

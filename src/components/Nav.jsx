@@ -21,7 +21,8 @@ const Nav = () => {
         <motion.div
             className="nav-container"
             style={{
-                opacity: navVisible
+                opacity: navVisible,
+                display: smooth.viewNavigation ? "block" : "none"
             }}
         >
             <div 
@@ -86,7 +87,7 @@ const Nav = () => {
                                 key={index}
                                 style={{ color: smooth.primaryDark }}
                                 onClick={() => {
-                                    scroll.scrollTo(size.height * .8 + (size.height * index))
+                                    scroll.scrollTo(smooth.introHeight + (size.height * index))
                                     setNavOpen(false)
                                 }}  
                             >{project.website}</li>
@@ -95,7 +96,7 @@ const Nav = () => {
                     <li
                         style={{ color: smooth.primaryDark }}
                         onClick={() => {
-                            scroll.scrollTo(size.height * .8 + (size.height * smooth.projects.length))
+                            scroll.scrollTo(smooth.introHeight + (size.height * smooth.projects.length))
                             setNavOpen(false)
                         }}
                     >contact</li>

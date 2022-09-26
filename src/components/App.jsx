@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useMemo } from 'react'
 import { SmoothContext } from '../providers/SmoothProvider'
 import { useWindowSize } from '../helpers/useWindowSize'
 import { motion, AnimatePresence } from 'framer-motion'
+import CookieConsent from "react-cookie-consent";
 
 import Intro  from './Intro'
 import Projects from './Projects'
@@ -36,7 +37,7 @@ const App = () => {
 
     useEffect(() => {
         setSmooth(state => ({ ...state, introHeight: theIntroHeight }))
-    }, [theIntroHeight])
+    }, [theIntroHeight, setSmooth])
 
     return (
         <AnimatePresence>
@@ -53,6 +54,15 @@ const App = () => {
                 <Projects />
                 <Contact />
                 <Nav />
+                <CookieConsent
+                    location="bottom"
+                    buttonText="Accept"
+                    cookieName="smoothCookie"
+                    style={{ background: smooth.primaryDark }}
+                    buttonStyle={{ background: "grey", color: smooth.primaryLight, fontSize: "12px" }}
+                    >
+                    This website uses cookies to enhance the user experience.{" "}
+                </CookieConsent>
             </motion.main>
         </AnimatePresence>
     )

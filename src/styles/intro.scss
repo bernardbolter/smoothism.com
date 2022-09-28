@@ -146,10 +146,14 @@
         flex-direction: row;
         justify-content: flex-end;
         align-items: flex-start;
-        margin-top: 174px;
+        margin-top: 14px;
         opacity: .5;
         transition: opacity .5s ease;
         cursor: pointer;
+
+        @media screen and (min-width: $tablet) {
+            margin-top: 174px;
+        }
 
         &:hover {
             opacity: .8;
@@ -176,12 +180,11 @@
 .lead {
     position: absolute;
     top: 220px;
-    width: 90%;
     margin: 0 5%;
 
     @media screen and (min-width: $mobile) {
         top: 35vh;
-        right: 5%;
+        left: 20%;
         margin: 0;
     }
 
@@ -191,20 +194,25 @@
     }
 
     h1 {
-        font-size: 20px;
-        line-height: 30px;
+        font-size: 17px;
+        line-height: 24px;
         font-weight: 700;
         margin: 0;
         padding: 0;
         text-align: left;
 
         @media screen and (min-width: $mobile) {
+            font-size: 20px;
+            line-height: 28px;
+        }
+
+        @media screen and (min-width: $tablet) {
             font-size: 28px;
             line-height: 34px;
             text-align: right;
         }
 
-        @media screen and (min-width: $tablet) {
+        @media screen and (min-width: $desktop) {
             font-size: 32px;
             line-height: 38px;
         }
@@ -214,7 +222,7 @@
 .pitch {
     position: absolute;
     top: 350px;
-    right: 10px;
+    right: 40px;
 
     @media screen and (min-width: $mobile) {
         top: 60vh;
@@ -227,8 +235,8 @@
     }
 
     h2 {
-        font-size: 18px;
-        line-height: 28px;
+        font-size: 14px;
+        line-height: 24px;
         text-align: right;
         font-weight: 400;
         margin: 0;
@@ -248,7 +256,7 @@
     h3 {
         font-size: 12px;
         line-height: 23px;
-        text-align: left;
+        text-align: right;
         font-weight: 300;
         margin: 0;
         padding: 0;
@@ -258,5 +266,37 @@
             line-height: 23px;
             text-align: right;
         }
+    }
+}
+
+.box {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40vh;
+    margin: 15vh 0 15vh;
+    padding: 0;
+    top: 0;
+    left: 0;
+    // opacity: .05;
+
+    @media screen and (min-width: $mobile) {
+        width: 80%;
+        margin: 20vh 10% 15vh;
+    }
+
+    @media screen and (min-width: $tablet) {
+        width: 60%;
+        margin: 25vh 20% 15vh;
+    }
+
+    svg {
+        width: 100%;
+        height: auto;
+        position: absolute;
     }
 }

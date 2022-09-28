@@ -1,7 +1,7 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import { motion } from 'framer-motion'
-import { SmoothContext } from '../providers/SmoothProvider'
 import { useWindowSize } from '../helpers/useWindowSize'
+import { SmoothContext } from '../providers/SmoothProvider'
 import * as Scroll from 'react-scroll'
 
 import { ReactComponent as Logo } from '../svg/logo.svg'
@@ -11,19 +11,9 @@ import { ReactComponent as Github } from '../svg/github.svg'
 import '../styles/intro.scss'
 
 const Intro = () => {
-    const [smooth, setSmooth] = useContext(SmoothContext)
+    const [smooth] = useContext(SmoothContext)
     const size = useWindowSize()
     var scroll = Scroll.animateScroll;
-
-    useEffect(() => {
-        var introHeight
-        if (size.width < 500) {
-            introHeight = 550
-        } else {
-            introHeight = size.height * .8
-        }
-        setSmooth(state => ({ ...state, introHeight: introHeight }))
-    }, [size, setSmooth])
 
     return (
         <section 
@@ -63,6 +53,23 @@ const Intro = () => {
                     animate={{ translateX: 0 }}
                     transition={{ duration: 0.5, ease: 'easeIn', delay: 0.6 }}
                 >lives and codes in Berlin</motion.h3>
+            </motion.div>
+            <motion.div
+                className="box"
+            >
+                {
+                    [1,2,3,4].map(i => (
+                        <svg  viewBox="0 0 426 244" key={i}>
+                            <motion.path 
+                                d="M0 243.5V0.5H425.5V172.5L313.5 243.5H0Z" 
+                                initial={{ fill: smooth.primaryDark, opacity: 0 }}
+                                animate={{ scale: `0.${i * 2}`, opacity: `0.0${i * 2}`  }}
+                                transition={{ duration: 2.0, ease: "linear", delay: `${i}` }}
+                                style={{ transform:  "scale(1)" }}
+                            />
+                        </svg>
+                    ))
+                }
             </motion.div>
             <motion.div className="into-links">
                 <motion.a 

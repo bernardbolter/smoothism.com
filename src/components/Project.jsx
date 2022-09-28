@@ -9,7 +9,7 @@ import { ReactComponent as Github } from '../svg/github.svg'
 import '../styles/project.scss'
 
 const Project = ({ project, index }) => {
-    const [smooth] = useContext(SmoothContext)
+    const [smooth, setSmooth] = useContext(SmoothContext)
     const [viewWebsite, setViewWebsite] = useState(false)
     const [websiteZ, setWebsiteZ] = useState(false)
     const [even] = useState(index % 2 === 0 ? true : false)
@@ -19,19 +19,23 @@ const Project = ({ project, index }) => {
     const movingWidth = useTransform(scrollY, [index * size.height, smooth.introHeight + (size.height * index)], [size.width - 44 - smooth.projectBorder - smooth.projectBorder, smooth.projectBorder])
     const bottomHeight = useTransform(scrollY, [index * size.height, smooth.introHeight + (size.height * index)], [size.height - 44 - smooth.projectBorder - smooth.projectBorder, smooth.projectBorder])
     const projectLinkVisible = useTransform(scrollY, [(index * size.height) + (smooth.introHeight * .1), (index * size.height) + (smooth.introHeight * .5)], [1, 0])
+    // console.log('pro link ', projectLinkVisible)
     const headerVisible = useTransform(scrollY, [(index * size.height) + (smooth.introHeight * .5), (index * size.height) + (smooth.introHeight * .9)], [0, 1])
+    // console.log(headerVisible)
 
     useEffect(() => {
         if (viewWebsite) {
             setTimeout(() => {
+                setSmooth(state => ({ ...state, viewNavigation: false }))
                 setWebsiteZ(true)
                 document.body.style.overflow = "hidden"
             }, 1000)
         } else {
+            setSmooth(state => ({ ...state, viewNavigation: true }))
             setWebsiteZ(false)
             document.body.style.overflow = "auto"
         }
-    }, [viewWebsite])
+    }, [viewWebsite, setSmooth])
 
     return (
         <section className="project-container">
@@ -53,11 +57,11 @@ const Project = ({ project, index }) => {
                 style={{
                     left: even ? smooth.projectBorder : "auto",
                     right: even ? "auto" : smooth.projectBorder,
-                    top: index === 0 ? 0 : -40,
+                    top: index === 0 ? -20 : -40,
                     opacity: projectLinkVisible
                 }}
                 onClick={() => {
-                    scroll.scrollTo(size.height * .8 + (size.height * index))
+                    scroll.scrollTo(smooth.introHeight + (size.height * index))
                 }} 
             >
                 <p>{index === 0 ? "View" : "Next"}</p>
@@ -91,7 +95,8 @@ const Project = ({ project, index }) => {
                         top: size.width < 550 ? smooth.projectBorder : smooth.projectBorder - 20,
                         left: size.width < 550 ? smooth.projectBorder : 'auto',
                         opacity: headerVisible,
-                        color: smooth.primaryDark
+                        color: smooth.primaryDark,
+                        backgroundColor: smooth.primaryLight
                     }}
                 >
                     {project.tagline}
@@ -113,7 +118,7 @@ const Project = ({ project, index }) => {
                         left: 0,
                         top: 0,
                         width: "100%",
-                        height: size.width < 550 ? 50 : smooth.projectBorder
+                        height: size.width < 550 ? 25 : smooth.projectBorder
                     }}
                 />
                 <motion.div
@@ -178,13 +183,13 @@ const Project = ({ project, index }) => {
                 <div 
                     className="web-link"
                     onClick={() => {
-                        scroll.scrollTo(size.height * .8 + (size.height * index))
+                        scroll.scrollTo(smooth.introHeight + (size.height * index))
                         setViewWebsite(true)
                     }}
                 >
                     <p
                         style={{ color: smooth.primaryDark }}
-                    >interacte live</p>
+                    >view live website</p>
                 </div>
             </motion.div>
             <div 

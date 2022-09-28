@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext } from 'react'
-import { randomColor, shuffle } from '../helpers'
+import { randomColor } from '../helpers'
 
 import Projects from '../data/projects.json'
 
@@ -14,8 +14,9 @@ const SmoothProvider = ({ children }) => {
         changeColor: false,
         introHeight: 0,
         projectBorder: 0,
-        projects: [],
-        footerModal: 'none'
+        projects: Projects,
+        footerModal: 'none',
+        viewNavigation: true
     })
 
     useEffect(() => {
@@ -28,12 +29,14 @@ const SmoothProvider = ({ children }) => {
         }))
     }, [smooth.changeColor])
 
-    useEffect(() => {
-        setSmooth(state => ({
-            ...state,
-            projects: shuffle(Projects)
-        }))
-    }, [])
+    // const shuffledProjects = shuffle(Projects)
+
+    // useEffect(() => {
+    //     setSmooth(state => ({
+    //         ...state,
+    //         projects: shuffledProjects
+    //     }))
+    // }, [])
     
     return (
         <SmoothContext.Provider

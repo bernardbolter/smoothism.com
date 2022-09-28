@@ -19,6 +19,17 @@ const Impressum = () => {
                 borderTop: `1px solid ${smooth.secondaryDark}`
             }}    
         >
+            <div className="modal-box">
+                <h1>IMPRESSUM</h1>
+                <h2>AUTOR DIESES INTERNETANGEBOTES UND INHABER VON SMOOTHISM</h2>
+                <h5>Bernard John Bolter IV</h5>
+                <h5>Cuvry Strasse 32</h5>
+                <h5>10997 Berlin</h5>
+                <h4>email: bernardbolter@gmail.com</h4>
+                <h5>DE: +49 (0)151 4749 1553</h5>
+                <h5>US: +1 415 490 7702 <span>what's app, telegram, and signal</span></h5>
+                <h4>Steuer Nr. 15/235/05740</h4>
+            </div>
             <p>Impressum</p>
             <div
                 className="modal-close"

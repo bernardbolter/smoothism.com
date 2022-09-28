@@ -97,6 +97,15 @@
     }
 }
 
+.send-button {
+    border: none;
+    font-size: 15px;
+    font-family: "IBM Plexo Mono", monospace;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    margin: 10px 0 0 0;
+}
+
 .form-name {
     width: 100%;
 
@@ -118,4 +127,16 @@
 
 .form-message {
     width: 100%;
+}
+
+.error-message {
+    color: $error;
+    font-size: 10px;
+    opacity: 0.8;
+    margin: 3px 0 0 0;
+}
+
+.form-loader {
+    width: 40px;
+    height: 40px;
 }

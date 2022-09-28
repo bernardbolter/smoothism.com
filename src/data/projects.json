@@ -14,6 +14,12 @@
         "github" : "https://github.com/bernardbolter/manmade-skeleton"
     },
     {
+        "website" : "augustinpalm.se",
+        "link" : "https://www.augustinpalm.se/",
+        "tagline" : "Swedish media journalist",
+        "madeWith" : "Wordpress, Jquery, Sketch, Issuu Api"
+    },
+    {
         "website" : "herbstsalon.berlin",
         "link" : "http://herbstsalon.berlin",
         "tagline" : "Art Event located in the Schöneberg, Berlin",

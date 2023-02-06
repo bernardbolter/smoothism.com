@@ -7,7 +7,7 @@ import Project from './Project'
 
 // import { shuffle } from '../helpers'
 
-import '../styles/projects.scss'
+// import '../styles/projects.scss'
 
 const Projects = () => {
     const [smooth] = useContext(SmoothContext)

@@ -4,11 +4,14 @@ import { useWindowSize } from '../helpers/useWindowSize'
 import { SmoothContext } from '../providers/SmoothProvider'
 import * as Scroll from 'react-scroll'
 
-import { ReactComponent as Logo } from '../svg/logo.svg'
-import { ReactComponent as Insta } from '../svg/insta.svg'
-import { ReactComponent as Github } from '../svg/github.svg'
+import Logo from '../svg/logo'
+import Insta from '../svg/insta'
+import Github from '../svg/github'
+// import { ReactComponent as Logo } from '../svg/logo.js'
+// import { ReactComponent as Insta } from '../svg/insta.js'
+// import { ReactComponent as Github } from '../svg/github.js'
 
-import '../styles/intro.scss'
+// import '../styles/intro.scss'
 
 const Intro = () => {
     const [smooth] = useContext(SmoothContext)

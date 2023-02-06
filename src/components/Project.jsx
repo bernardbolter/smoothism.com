@@ -4,9 +4,7 @@ import { motion, useViewportScroll, useTransform } from 'framer-motion'
 import { useWindowSize } from '../helpers/useWindowSize'
 import * as Scroll from 'react-scroll'
 
-import { ReactComponent as Github } from '../svg/github.svg'
-
-import '../styles/project.scss'
+import Github from '../svg/github'
 
 const Project = ({ project, index }) => {
     const [smooth, setSmooth] = useContext(SmoothContext)

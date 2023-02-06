@@ -4,7 +4,7 @@ import { SmoothContext } from '../providers/SmoothProvider'
 
 import Ellipsis from '../images/Ellipsis.gif'
 
-import '../styles/contact-form.scss'
+// import '../styles/contact-form.scss'
 
 const ContactForm = () => {
     const [smooth] = useContext (SmoothContext)

@@ -25,7 +25,7 @@ const ContactForm = () => {
             <h1>Let's see how we can make</h1>
             <h1>your thing Smooth.</h1>
             <p>by email</p>
-            <h2>whatsup@smoothism.com</h2>
+            <h2>smooth@smoothism.com</h2>
             <p>or use the form</p>
             <Formik
                 initialValues={{name: '', email: '', message: ''}}
@@ -57,7 +57,7 @@ const ContactForm = () => {
                         // actions.resetForm()
                       })
                       .catch(() => {
-                        setMessageSuccess("There was an error sending your message, you can send a message to whatsup@smoothism.com, or try again later. Our apologize.")
+                        setMessageSuccess("There was an error sending your message, you can send a message to smooth@smoothism.com, or try again later. Our apologize.")
                       })
                     //   .finally(() => actions.setSubmitting(false))
                     }

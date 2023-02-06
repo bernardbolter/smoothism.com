@@ -22,8 +22,8 @@ const SmoothProvider = ({ children }) => {
     useEffect(() => {
         setSmooth(state => ({
             ...state,
-            primaryDark: randomColor(0,74,1),
-            secondaryDark: randomColor(0,74,1),
+            primaryDark: randomColor(20,45,1),
+            secondaryDark: randomColor(20,45,1),
             primaryLight: randomColor(250,255,1),
             secondaryLight: randomColor(250,255,1)
         }))

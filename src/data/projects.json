@@ -14,10 +14,24 @@
         "github" : "https://github.com/bernardbolter/manmade-skeleton"
     },
     {
+        "website" : "megacities.world",
+        "link" : "http://megacities.world",
+        "tagline" : "Composite Country Portraits, an art project using satellite images",
+        "madeWith" : "React with Gatsby, D3, VScode, Figma",
+        "github" : "https://github.com/bernardbolter/megacities"
+    },
+    {
         "website" : "herbstsalon.berlin",
         "link" : "http://herbstsalon.berlin",
         "tagline" : "Art Event located in the Schöneberg, Berlin",
         "madeWith" : "React with Gatsby, Contentful backend, Mapbox, VScode, Figma",
         "github" : "https://github.com/bernardbolter/herbstsalon"
+    },
+    {
+        "website" : "augustinpalm.se",
+        "link" : "http://www.augustinpalm.se/",
+        "tagline" : "Swedish media journalist",
+        "madeWith" : "Wordpress, Jquery, Sketch, Issuu Api",
+        "github" : "https://github.com/bernardbolter/palm16"
     }
 ]

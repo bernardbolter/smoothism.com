@@ -5,10 +5,6 @@ import * as Scroll from 'react-scroll'
 import { useWindowSize } from '../helpers/useWindowSize'
 import Project from './Project'
 
-// import { shuffle } from '../helpers'
-
-// import '../styles/projects.scss'
-
 const Projects = () => {
     const [smooth] = useContext(SmoothContext)
     var scroll = Scroll.animateScroll;

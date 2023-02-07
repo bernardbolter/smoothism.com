@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 
 import { SmoothContext } from '../providers/SmoothProvider'
 
-import Ellipsis from '../images/Ellipsis.gif'
+import ThreeDots from '../svg/threeDots'
 
 const FormSchema = Yup.object().shape({
   name: Yup.string().min(2).max(50).required('required'),
@@ -16,6 +16,14 @@ const ContactForm = () => {
     const [smooth] = useContext (SmoothContext)
 
     const [responseMessage, setResponseMessage] = useState('')
+    const [formSubmitted, setFormSubmitted] = useState(false)
+
+    const handleFocus = () => {
+        if (formSubmitted) {
+            setFormSubmitted(false)
+            setResponseMessage('')
+        }
+    }
     
     return (
         <section 
@@ -40,7 +48,6 @@ const ContactForm = () => {
                     values,
                     { setSubmitting, resetForm }
                   ) => {
-                    console.log(values)
                     setSubmitting(true)
                     const response = await fetch('/api/mail', {
                       method: 'POST',
@@ -49,36 +56,52 @@ const ContactForm = () => {
                     if (response.status === 200) {
                       setResponseMessage("Your message has been sent, we will get back to you as soon as possible")
                       resetForm()
+                      setFormSubmitted(true)
                       setSubmitting(false)
                     } else {
                       setResponseMessage("There was an error sending you\'re message, please try again later or send an email directly to smooth@smoothism.com")
                       resetForm()
+                      setFormSubmitted(true)
                       setSubmitting(false)
                     }
                   }
                 }
             >
                 {({ errors, touched, isSubmitting }) => {
+                    console.log("subing: ", isSubmitting)
                     return (
                     <Form name="smoothism-contact">
                         <div className="form-input form-name">
                             <label htmlFor="name">Name: </label>
-                            <Field name="name" />
+                            <Field
+                                id="name"
+                                name="name" 
+                                onFocus={handleFocus}
+                            />
                             {(errors.name && touched.name) && <div className="error-message">{errors.name}</div>}
                         </div>
                         <div className="form-input form-email">
                             <label htmlFor="email">Email: </label>
-                            <Field name="email" />
+                            <Field 
+                                id="email"
+                                name="email" 
+                                onFocus={handleFocus}    
+                            />
                             {(errors.email && touched.email) && <div className="error-message">{errors.email}</div>}
                         </div>
                         <div className="form-input form-message">
                             <label htmlFor="message">Message: </label>
-                            <Field name="message" component="textarea"/>
+                            <Field
+                                id="message"
+                                name="message" 
+                                component="textarea"
+                                onFocus={handleFocus}    
+                            />
                             {(errors.message && touched.message) && <div className="error-message">{errors.message}</div>}
                         </div>
                         {isSubmitting ? (
                             <div className="form-blocks">
-                                <img className="form-loader" src={Ellipsis} alt="gif animation loader" />
+                                <ThreeDots />
                             </div>
                         ) : (
                             <>

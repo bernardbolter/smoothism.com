@@ -4,8 +4,6 @@ import { useWindowSize } from '../helpers/useWindowSize'
 import { motion, useViewportScroll, useTransform } from 'framer-motion'
 import * as Scroll from 'react-scroll'
 
-// import '../styles/nav.scss'
-
 const Nav = () => {
     const [smooth] = useContext(SmoothContext)
     const [navOpen, setNavOpen] = useState(false)

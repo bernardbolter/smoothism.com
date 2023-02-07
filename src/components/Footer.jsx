@@ -3,8 +3,6 @@ import { SmoothContext } from '../providers/SmoothProvider'
 import { motion } from 'framer-motion'
 import * as Scroll from 'react-scroll'
 
-// import '../styles/footer.scss'
-
 const Footer = () => {
     const [smooth, setSmooth] = useContext(SmoothContext)
     var scroll = Scroll.animateScroll;

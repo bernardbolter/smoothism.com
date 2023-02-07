@@ -7,11 +7,6 @@ import * as Scroll from 'react-scroll'
 import Logo from '../svg/logo'
 import Insta from '../svg/insta'
 import Github from '../svg/github'
-// import { ReactComponent as Logo } from '../svg/logo.js'
-// import { ReactComponent as Insta } from '../svg/insta.js'
-// import { ReactComponent as Github } from '../svg/github.js'
-
-// import '../styles/intro.scss'
 
 const Intro = () => {
     const [smooth] = useContext(SmoothContext)

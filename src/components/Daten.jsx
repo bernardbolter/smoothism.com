@@ -2,8 +2,6 @@ import React, { useContext } from 'react'
 import { SmoothContext } from '../providers/SmoothProvider'
 import { motion } from 'framer-motion'
 
-// import '../styles/modal.scss'
-
 const Daten = () => {
     const [smooth, setSmooth] = useContext(SmoothContext)
     

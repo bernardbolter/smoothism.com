@@ -1,21 +1,22 @@
 import React, { useContext, useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
+import * as Yup from 'yup'
+
 import { SmoothContext } from '../providers/SmoothProvider'
 
 import Ellipsis from '../images/Ellipsis.gif'
 
-// import '../styles/contact-form.scss'
+const FormSchema = Yup.object().shape({
+  name: Yup.string().min(2).max(50).required('required'),
+  email: Yup.string().email('invalid email').required('required'),
+  message: Yup.string().min(10).required('required')
+})
 
 const ContactForm = () => {
     const [smooth] = useContext (SmoothContext)
-    const [messageSuccess, setMessageSuccess] = useState('')
 
-    const encode = (data) => {
-        return Object.keys(data)
-          .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-          .join("&");
-      }
-
+    const [responseMessage, setResponseMessage] = useState('')
+    
     return (
         <section 
             className="contact-form-container"
@@ -28,59 +29,52 @@ const ContactForm = () => {
             <h2>smooth@smoothism.com</h2>
             <p>or use the form</p>
             <Formik
-                initialValues={{name: '', email: '', message: ''}}
-                validate={values => {
-                    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-                    const errors = {};
-                    if(!values.name) {
-                      errors.name = 'Name Required'
-                    }
-                    if(!values.email || !emailRegex.test(values.email)) {
-                      errors.email = 'Valid Email Required'
-                    }
-                    if(!values.message) {
-                      errors.message = 'Message Required'
-                    }
-                    return errors;
-                  }}
-                  onSubmit={
-                    (values, actions) => {
-                        console.log(values)
-                        actions.setSubmitting(true)
-                      fetch("/", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                        body: encode({ "form-name": "smoothism-contact", ...values })
-                      })
-                      .then(() => {
-                        setMessageSuccess("Your message has been sent. Thanks and we will get back to you shortly")
-                        // actions.resetForm()
-                      })
-                      .catch(() => {
-                        setMessageSuccess("There was an error sending your message, you can send a message to smooth@smoothism.com, or try again later. Our apologize.")
-                      })
-                    //   .finally(() => actions.setSubmitting(false))
+                initialValues={{
+                  name: '', 
+                  email: '', 
+                  message: ''
+                }}
+                validationSchema={FormSchema}
+                onSubmit={
+                  async (
+                    values,
+                    { setSubmitting, resetForm }
+                  ) => {
+                    console.log(values)
+                    setSubmitting(true)
+                    const response = await fetch('/api/mail', {
+                      method: 'POST',
+                      body: JSON.stringify(values)
+                    })
+                    if (response.status === 200) {
+                      setResponseMessage("Your message has been sent, we will get back to you as soon as possible")
+                      resetForm()
+                      setSubmitting(false)
+                    } else {
+                      setResponseMessage("There was an error sending you\'re message, please try again later or send an email directly to smooth@smoothism.com")
+                      resetForm()
+                      setSubmitting(false)
                     }
                   }
+                }
             >
-                {({ isSubmitting }) => {
-                    console.log(isSubmitting)
+                {({ errors, touched, isSubmitting }) => {
                     return (
-                    <Form name="smoothism-contact" data-netlify={true}>
+                    <Form name="smoothism-contact">
                         <div className="form-input form-name">
                             <label htmlFor="name">Name: </label>
                             <Field name="name" />
-                            <ErrorMessage name="name">{msg => <div className="error-message">{msg}</div>}</ErrorMessage>
+                            {(errors.name && touched.name) && <div className="error-message">{errors.name}</div>}
                         </div>
                         <div className="form-input form-email">
                             <label htmlFor="email">Email: </label>
                             <Field name="email" />
-                            <ErrorMessage name="email">{msg => <div className="error-message">{msg}</div>}</ErrorMessage>
+                            {(errors.email && touched.email) && <div className="error-message">{errors.email}</div>}
                         </div>
                         <div className="form-input form-message">
                             <label htmlFor="message">Message: </label>
                             <Field name="message" component="textarea"/>
-                            <ErrorMessage name="message">{msg => <div className="error-message">{msg}</div>}</ErrorMessage>
+                            {(errors.message && touched.message) && <div className="error-message">{errors.message}</div>}
                         </div>
                         {isSubmitting ? (
                             <div className="form-blocks">
@@ -96,7 +90,7 @@ const ContactForm = () => {
                                         color: smooth.primaryLight
                                     }}    
                                 >Send</button>
-                                <p>{messageSuccess.length !== 0 && messageSuccess}</p>
+                                <p>{responseMessage.length !== 0 && responseMessage}</p>
                             </>
                         )}
                         

@@ -22,9 +22,9 @@ const Footer = () => {
                 <span className="copy">&copy;</span>
                 <span>{new Date().getFullYear()}</span>
             </p>
-            <p
+            {/* <p
                 onClick={() => setSmooth(state => ({ ...state, footerModal: state.footerModal === 'philosophy' ? 'none' : 'philosophy' }))}
-            >Philosophy of Smoothism</p>
+            >Philosophy of Smoothism</p> */}
             <p
                 onClick={() => setSmooth(state => ({ ...state, footerModal: state.footerModal === 'impressum' ? 'none' : 'impressum' }))}
             >Impressum</p>
